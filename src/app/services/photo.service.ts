@@ -24,4 +24,11 @@ export class PhotoService {
       tap(data => console.log(data)) // Parenthèse fermée correctement ici
     );
   }
+  // Mettre à jour une photo
+  updatePhoto(photo: Photo): Observable<Photo> {
+    const updateUrl = `${this.apiUrl}/${photo.id}`; // URL de l'API pour mettre à jour la photo
+    return this.http.put<Photo>(updateUrl, photo).pipe(
+      tap(updatedPhoto => console.log('Photo mise à jour:', updatedPhoto))
+    );
+  }
 }

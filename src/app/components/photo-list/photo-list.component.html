@@ -1,17 +1,12 @@
-<table border="1">
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image URL</th>
-      <th>Snaps</th>
-    </tr>
-    <tr *ngFor="let photo of photos">
-      <td>{{ photo.id }}</td>
-      <td>{{ photo.title }}</td>
-      <td>{{ photo.description }}</td>
-      <td>{{ photo.imageUrl }}</td>
-      <td>{{ photo.snaps }}</td>
-    </tr>
-  </table>
+<div class="photo-gallery">
+    <div class="snaps-container">
+      <div *ngFor="let photo of photos" class="photo-card">
+        <img [src]="photo.imageUrl" [alt]="photo.title" />
+        <h2>{{ photo.title }}</h2>
+        <p>{{ photo.description }}</p>
+        <p><strong>Snaps:</strong> {{ photo.snaps }}</p>
+        <button (click)="onSnapClicked(photo)">Snap</button> <!-- Bouton Snap -->
+      </div>
+    </div>
+  </div>
   

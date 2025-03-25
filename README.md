@@ -1,4 +1,51 @@
-# PhotoCommunity
+# 📸 PhotoCommunity
+
+PhotoCommunity est une application Angular permettant d'afficher et de gérer une galerie de photos interactives où les utilisateurs peuvent "snaper" (liker) leurs photos préférées.
+
+## 🚀 Fonctionnalités
+
+- 📷 Affichage dynamique des photos avec titre et description
+- 👍 Possibilité de "snaper" une photo pour augmenter son compteur
+- 🔄 Mise à jour des données via un backend RESTful
+
+## 🛠️ Technologies utilisées
+
+- **Frontend** : Angular (avec HttpClientModule et CommonModule)
+- **Backend** : API REST (exemple avec Spring Boot)
+- **Base de données** : (à définir selon implémentation)
+
+## 📂 Structure du projet
+```
+src/
+│── app/
+│   ├── components/photo-list/
+│   │   ├── photo-list.component.css
+│   │   ├── photo-list.component.html
+│   │   ├── photo-list.component.spec.ts
+│   │   ├── photo-list.component.ts
+│   ├── services/
+│   │   ├── photo.service.spec.ts
+│   │   ├── photo.service.ts
+│   ├── app.component.css
+│   ├── app.component.html
+│   ├── app.component.spec.ts
+│   ├── app.component.ts
+│   ├── app.config.ts
+│   ├── app.routes.ts
+│── index.html
+│── main.ts
+│── styles.css
+```
+
+## 🔧 API Backend
+
+L'application consomme une API REST exposée sur [http://localhost:8080/api/facesnaps](http://localhost:8080/api/facesnaps) avec les routes suivantes :
+
+- **`GET /api/facesnaps`** : Récupère toutes les photos  
+- **`PUT /api/facesnaps/{id}`** : Met à jour une photo (notamment le nombre de snaps)  
+
+L'API utilisée provient du projet suivant : [LearnSpringDataMongoDB](https://github.com/HamCam203/LearnSpringDataMongoDB).
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
 

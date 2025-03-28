@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 export interface Photo {
+  isSnapped: boolean;
   id: string;
   title: string;
   description: string;

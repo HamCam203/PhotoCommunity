@@ -23,13 +23,17 @@ export class PhotoListComponent implements OnInit {
 
   // Méthode appelée quand un utilisateur clique sur le bouton Snap
   onSnapClicked(photo: Photo): void {
-    // Augmenter le nombre de snaps localement
-    photo.snaps += 1;
-
-    // Appeler le service pour mettre à jour la photo dans la BDD
-    this.photoService.updatePhoto(photo).subscribe(updatedPhoto => {
-      // Ici, on pourrait éventuellement afficher un message ou mettre à jour l'interface avec la photo mise à jour
-      console.log('Photo mise à jour:', updatedPhoto);
-    });
+    // Vérifie si la photo a déjà été "snappée"
+    if (!photo.isSnapped) {
+      photo.snaps += 1;  // Augmenter le nombre de snaps
+      photo.isSnapped = true;  // Appliquer la classe snapped
+  
+      // Mettre à jour la photo dans la base de données
+      this.photoService.updatePhoto(photo).subscribe(updatedPhoto => {
+        console.log('Photo mise à jour:', updatedPhoto);
+      });
+    }
   }
+  
+  
 }

@@ -1,12 +1,13 @@
 <div class="photo-gallery">
-    <div class="snaps-container">
-      <div *ngFor="let photo of photos" class="photo-card">
-        <img [src]="photo.imageUrl" [alt]="photo.title" />
-        <h2>{{ photo.title }}</h2>
-        <p>{{ photo.description }}</p>
-        <p><strong>Snaps:</strong> {{ photo.snaps }}</p>
-        <button (click)="onSnapClicked(photo)">Snap</button> <!-- Bouton Snap -->
-      </div>
+  <div class="snaps-container">
+    <div *ngFor="let photo of photos" 
+         class="photo-card" 
+         [ngClass]="{'snapped': photo.isSnapped}">
+      <img [src]="photo.imageUrl" [alt]="photo.title" />
+      <h2>{{ photo.title }}</h2>
+      <p>{{ photo.description }}</p>
+      <p><strong>Snaps:</strong> {{ photo.snaps }}</p>
+      <button (click)="onSnapClicked(photo)">Snap</button>
     </div>
   </div>
-  
+</div>

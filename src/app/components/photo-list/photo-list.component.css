@@ -29,18 +29,42 @@
     height: auto;
     border-radius: 10px;
   }
+  
   button {
-    background-color: #007bff;
-    color: white;
+    background-color: #80e683;
+    box-sizing: border-box;
+    padding: 5px 10px;
     border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
+    box-shadow: lightgray 3px 3px 7px;
+    margin-right: 20px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+
+    &:active {
+      background-color: #4CAF50;
+    }
+  }
+
+  .snapped {
+    background-color: rgba(144, 238, 144, 0.4); /* Vert clair */
+    color: darkgreen;
+    border: 2px solid lightgreen;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(144, 238, 144, 0.6);
   }
   
-  button:hover {
-    background-color: #0056b3;
+  .snapped button {
+    background-color: darkgreen;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 16px;
+    box-shadow: 3px 3px 7px lightgreen;
   }
+  
+  
+  .snapped:hover {
+    transform: scale(1.05);
+  }
+  
     

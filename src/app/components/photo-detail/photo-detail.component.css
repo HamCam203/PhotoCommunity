@@ -1,95 +1,94 @@
 /* Conteneur principal pour centrer le contenu */
 .photo-detail-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f9f9f9;
-    padding: 20px;
-    position: relative; /* Pour positionner les flèches de manière absolue */
-  }
-  
-  /* Style de la carte */
-  .photo-card {
-    width: 100%;
-    max-width: 400px;  /* Limite la largeur maximale de la carte */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 20px;
-    background-color: white;
-    position: relative; /* Pour positionner les boutons de navigation sur la carte */
-    transition: transform 0.3s ease;
-  }
-  
-  /* Effet au survol pour la carte */
-  .photo-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .photo-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  /* Titre et description */
-  h2 {
-    font-size: 1.8em;
-    margin: 20px 0 10px 0;
-  }
-  
-  p {
-    font-size: 1.1em;
-    color: #555;
-  }
-  
-  /* Style des flèches (boutons de navigation) */
-  .nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2em;
-    background-color: #4CAF50;  /* Couleur de fond verte */
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 20px;  /* Hauteur plus grande pour un bouton plus vertical */
-    width: 50px;  /* Largeur fixe des boutons */
-    height: 100%;  /* Hauteur des boutons égale à celle de la carte */
-    border-radius: 10px;
-    transition: background-color 0.3s;
-    z-index: 10;  /* Assurez-vous que les boutons sont au-dessus de la carte */
-  }
-  
-  /* Changement de couleur au survol des flèches */
-  .nav-btn:hover {
-    background-color: #45a049;
-  }
-  
-  .left {
-    left: 0; /* Flèche à gauche */
-  }
-  
-  .right {
-    right: 0; /* Flèche à droite */
-  }
-  
-  /* Ajout du bouton Snap */
-  button {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding: 20px;
+  position: relative; /* Pour positionner les flèches de manière absolue */
+}
+
+/* Style de la carte */
+.photo-card {
+  width: 100%;
+  max-width: 400px;  /* Limite la largeur maximale de la carte */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  position: relative; /* Pour positionner les boutons de navigation sur la carte */
+  transition: transform 0.3s ease;
+}
+
+/* Effet au survol pour la carte */
+.photo-card:hover {
+  transform: scale(1.05);
+}
+
+.photo-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Titre et description */
+h2 {
+  font-size: 1.8em;
+  margin: 20px 0 10px 0;
+}
+
+p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Style des flèches (boutons de navigation) */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  background-color: #4CAF50;  /* Couleur de fond verte */
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 20px;  /* Hauteur plus grande pour un bouton plus vertical */
+  width: 50px;  /* Largeur fixe des boutons */
+  height: 100%;  /* Hauteur des boutons égale à celle de la carte */
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  z-index: 10;  /* Assurez-vous que les boutons sont au-dessus de la carte */
+}
+
+/* Changement de couleur au survol des flèches */
+.nav-btn:hover {
+  background-color: #45a049;
+}
+
+.left {
+  left: 0; /* Flèche à gauche */
+}
+
+.right {
+  right: 0; /* Flèche à droite */
+}
+
+/* Ajout du bouton Snap */
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}

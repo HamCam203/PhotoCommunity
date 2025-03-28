@@ -7,7 +7,12 @@
       <h2>{{ photo.title }}</h2>
       <p>{{ photo.description }}</p>
       <p><strong>Snaps:</strong> {{ photo.snaps }}</p>
-      <button (click)="onSnapClicked(photo)">Snap</button>
+      
+      <!-- Bouton Snap/UnSnap -->
+      <button (click)="onSnapClicked(photo)">
+        {{ photo.isSnapped ? 'UnSnap' : 'Snap' }}
+      </button>
+
     </div>
   </div>
 </div>

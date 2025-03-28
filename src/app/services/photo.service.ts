@@ -25,11 +25,18 @@ export class PhotoService {
       tap(data => console.log(data)) // Parenthèse fermée correctement ici
     );
   }
-  // Mettre à jour une photo
+
+  // Mettre à jour une photo (ajout ou retrait d'un like)
   updatePhoto(photo: Photo): Observable<Photo> {
-    const updateUrl = `${this.apiUrl}/${photo.id}`; // URL de l'API pour mettre à jour la photo
-    return this.http.put<Photo>(updateUrl, photo).pipe(
+    const updateUrl = `${this.apiUrl}/${photo.id}`;
+    const updateData = {
+      snaps: photo.snaps, // On envoie uniquement le nombre de snaps mis à jour
+      isSnapped: photo.isSnapped // Indique si la photo est likée ou pas
+    };
+
+    return this.http.put<Photo>(updateUrl, updateData).pipe(
       tap(updatedPhoto => console.log('Photo mise à jour:', updatedPhoto))
     );
   }
+
 }

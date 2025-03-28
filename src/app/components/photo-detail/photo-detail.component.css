@@ -12,7 +12,7 @@
   /* Style de la carte */
   .photo-card {
     width: 100%;
-    max-width: 400px;
+    max-width: 400px;  /* Limite la largeur maximale de la carte */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -45,31 +45,35 @@
     color: #555;
   }
   
-  /* Style des flèches */
+  /* Style des flèches (boutons de navigation) */
   .nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     font-size: 2em;
-    background: none;
+    background-color: #4CAF50;  /* Couleur de fond verte */
+    color: white;
     border: none;
     cursor: pointer;
-    color: #007bff;
-    padding: 10px;
-    z-index: 10;
-    transition: color 0.3s ease;
+    padding: 20px;  /* Hauteur plus grande pour un bouton plus vertical */
+    width: 50px;  /* Largeur fixe des boutons */
+    height: 100%;  /* Hauteur des boutons égale à celle de la carte */
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    z-index: 10;  /* Assurez-vous que les boutons sont au-dessus de la carte */
   }
   
+  /* Changement de couleur au survol des flèches */
   .nav-btn:hover {
-    color: #0056b3;
+    background-color: #45a049;
   }
   
   .left {
-    left: 10px; /* Flèche à gauche */
+    left: 0; /* Flèche à gauche */
   }
   
   .right {
-    right: 10px; /* Flèche à droite */
+    right: 0; /* Flèche à droite */
   }
   
   /* Ajout du bouton Snap */

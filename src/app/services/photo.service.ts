@@ -38,5 +38,27 @@ export class PhotoService {
       tap(updatedPhoto => console.log('Photo mise à jour:', updatedPhoto))
     );
   }
+  // Nouvelle méthode pour récupérer une photo par son ID
+  getPhotoById(id: string): Observable<Photo> {
+    const photoUrl = `${this.apiUrl}/${id}`;
+    return this.http.get<Photo>(photoUrl).pipe(
+      tap(photo => console.log('Photo récupérée:', photo))
+    );
+  }
+
+
+  // Méthode partagée pour l'action Snap (ajout/retrait de like)
+  onSnapClicked(photo: Photo): Observable<Photo> {
+    if (photo.isSnapped) {
+      photo.snaps -= 1;  // Réduire le nombre de snaps si déjà liké
+    } else {
+      photo.snaps += 1;  // Augmenter le nombre de snaps si pas encore liké
+    }
+
+    photo.isSnapped = !photo.isSnapped; // Alterner l'état de isSnapped
+    
+    return this.updatePhoto(photo); // Mettre à jour la photo sur le serveur
+  }
+  
 
 }

@@ -1,20 +1,18 @@
-<div class="photo-gallery">
-  <div class="snaps-container">
-    <div *ngFor="let photo of photos" 
-         class="photo-card" 
-         [ngClass]="{'snapped': photo.isSnapped}">
+<div class="photo-detail-container">
+    <div class="photo-card">
+      <button class="nav-btn left" (click)="previousPhoto()">&#8592;</button>
+      
       <img [src]="photo.imageUrl" [alt]="photo.title" />
+      
+      <button class="nav-btn right" (click)="nextPhoto()">&#8594;</button>
+  
       <h2>{{ photo.title }}</h2>
       <p>{{ photo.description }}</p>
       <p><strong>Snaps:</strong> {{ photo.snaps }}</p>
-      
       <!-- Bouton Snap/UnSnap -->
       <button (click)="onSnapClicked(photo)">
         {{ photo.isSnapped ? 'UnSnap' : 'Snap' }}
       </button>
-
-      <button (click)="onViewPhoto(photo.id)">OnView</button>
-
     </div>
   </div>
-</div>
+  

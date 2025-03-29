@@ -37,23 +37,30 @@ export class PhotoDetailComponent implements OnInit {
     }
   }
 
-  // Fonction pour afficher la photo précédente
-  previousPhoto(): void {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.photo = this.photos[this.currentIndex];
-      this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
-    }
+// Fonction pour afficher la photo précédente (retour à la dernière si au début)
+previousPhoto(): void {
+  if (this.currentIndex > 0) {
+    this.currentIndex--;
+  } else {
+    this.currentIndex = this.photos.length - 1; // 🔄 Revient à la dernière photo
   }
 
-  // Fonction pour afficher la photo suivante
-  nextPhoto(): void {
-    if (this.currentIndex < this.photos.length - 1) {
-      this.currentIndex++;
-      this.photo = this.photos[this.currentIndex];
-      this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
-    }
+  this.photo = this.photos[this.currentIndex];
+  this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
+}
+
+// Fonction pour afficher la photo suivante (retour à la première si à la fin)
+nextPhoto(): void {
+  if (this.currentIndex < this.photos.length - 1) {
+    this.currentIndex++;
+  } else {
+    this.currentIndex = 0; // 🔄 Revient à la première photo
   }
+
+  this.photo = this.photos[this.currentIndex];
+  this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
+}
+
   // Méthode pour snap/unSnap
   onSnapClicked(photo: Photo): void {
     this.photoService.onSnapClicked(photo).subscribe(updatedPhoto => {

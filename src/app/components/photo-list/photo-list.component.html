@@ -10,7 +10,16 @@
       <h2>{{ photo.title }}</h2>
       <p>{{ photo.description }}</p>
       <p><strong>Snaps:</strong> {{ photo.snaps }}</p>
-      
+      <!-- Affichage si le FaceSnap est au-dessus ou en-dessous de la moyenne -->
+      <p *ngIf="isAboveAverage(photo.snaps)">
+        🟢 Ce FaceSnap est au-dessus de la moyenne !
+      </p>
+      <p *ngIf="isBelowAverage(photo.snaps)">
+        🔴 Ce FaceSnap est en-dessous de la moyenne.
+      </p>
+      <p *ngIf="isEqualAverage(photo.snaps)">
+        ⚪ Ce FaceSnap est exactement dans la moyenne.
+      </p>
       <!-- Bouton Snap/UnSnap -->
       <button (click)="onSnapClicked(photo)">
         {{ photo.isSnapped ? 'UnSnap' : 'Snap' }}

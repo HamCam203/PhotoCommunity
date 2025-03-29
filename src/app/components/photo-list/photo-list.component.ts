@@ -39,6 +39,17 @@ export class PhotoListComponent implements OnInit {
     const totalSnaps = this.photos.reduce((sum, photo) => sum + photo.snaps, 0);
     return totalSnaps / this.photos.length;
   }
+  isAboveAverage(snaps: number): boolean {
+    return snaps > this.getAverageSnaps();
+  }
+  
+  isBelowAverage(snaps: number): boolean {
+    return snaps < this.getAverageSnaps();
+  }
+  
+  isEqualAverage(snaps: number): boolean {
+    return snaps === this.getAverageSnaps();
+  }
   
   
 }

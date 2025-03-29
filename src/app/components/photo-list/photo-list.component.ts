@@ -33,5 +33,12 @@ export class PhotoListComponent implements OnInit {
       console.log('Photo mise à jour:', updatedPhoto);
     });
   }
+  getAverageSnaps(): number {
+    if (this.photos.length === 0) return 0;
+    
+    const totalSnaps = this.photos.reduce((sum, photo) => sum + photo.snaps, 0);
+    return totalSnaps / this.photos.length;
+  }
+  
   
 }

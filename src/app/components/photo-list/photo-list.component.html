@@ -1,5 +1,8 @@
 <div class="photo-gallery">
-  <div class="snaps-container">
+  <div class="average-snaps">
+    <h3>Moyenne des snaps : {{ getAverageSnaps() | number:'1.0-2' }}</h3>
+  </div>  
+  <div class="snaps-container">  
     <div *ngFor="let photo of photos" 
          class="photo-card" 
          [ngClass]="{'snapped': photo.isSnapped}">

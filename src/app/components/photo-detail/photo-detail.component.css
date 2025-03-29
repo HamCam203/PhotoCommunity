@@ -6,24 +6,23 @@
   min-height: 100vh;
   background-color: #d3d3d364; /* Gris clair */
   padding: 20px;
-  position: relative; /* Pour positionner les flèches de manière absolue */
+  position: relative;
 }
 
 /* Style de la carte */
 .photo-card {
   width: 100%;
-  max-width: 400px;  /* Limite la largeur maximale de la carte */
+  max-width: 400px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 20px;
   background-color: white;
-  position: relative; /* Pour positionner les boutons de navigation sur la carte */
+  position: relative;
   transition: transform 0.3s ease;
 }
 
-/* Effet au survol pour la carte */
 .photo-card:hover {
   transform: scale(1.05);
 }
@@ -43,6 +42,30 @@ h2 {
 p {
   font-size: 1.1em;
   color: #555;
+}
+
+/* Conteneur pour les boutons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espacement uniforme entre les boutons */
+  margin-top: 20px;
+}
+
+/* Boutons Snap, Aléatoire et autres */
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
 }
 
 /* Style des flèches (boutons de navigation) */
@@ -74,21 +97,4 @@ p {
 
 .right {
   right: 0; /* Flèche à droite */
-}
-
-/* Ajout du bouton Snap */
-button {
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #45a049;
 }

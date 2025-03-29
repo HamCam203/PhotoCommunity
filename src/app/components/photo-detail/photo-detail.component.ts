@@ -37,29 +37,43 @@ export class PhotoDetailComponent implements OnInit {
     }
   }
 
-// Fonction pour afficher la photo précédente (retour à la dernière si au début)
-previousPhoto(): void {
-  if (this.currentIndex > 0) {
-    this.currentIndex--;
-  } else {
-    this.currentIndex = this.photos.length - 1; // 🔄 Revient à la dernière photo
+  // Fonction pour afficher la photo précédente (retour à la dernière si au début)
+  previousPhoto(): void {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    } else {
+      this.currentIndex = this.photos.length - 1; // 🔄 Revient à la dernière photo
+    }
+
+    this.photo = this.photos[this.currentIndex];
+    this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
   }
 
-  this.photo = this.photos[this.currentIndex];
-  this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
-}
+  // Fonction pour afficher la photo suivante (retour à la première si à la fin)
+  nextPhoto(): void {
+    if (this.currentIndex < this.photos.length - 1) {
+      this.currentIndex++;
+    } else {
+      this.currentIndex = 0; // 🔄 Revient à la première photo
+    }
 
-// Fonction pour afficher la photo suivante (retour à la première si à la fin)
-nextPhoto(): void {
-  if (this.currentIndex < this.photos.length - 1) {
-    this.currentIndex++;
-  } else {
-    this.currentIndex = 0; // 🔄 Revient à la première photo
+    this.photo = this.photos[this.currentIndex];
+    this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
+  }
+  // Fonction pour afficher une photo aléatoire
+  randomPhoto(): void {
+    if (this.photos.length > 1) {
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * this.photos.length);
+      } while (randomIndex === this.currentIndex); // Assurer qu'on ne reprend pas la même photo
+
+      this.currentIndex = randomIndex;
+      this.photo = this.photos[this.currentIndex];
+      this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
+    }
   }
 
-  this.photo = this.photos[this.currentIndex];
-  this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
-}
 
   // Méthode pour snap/unSnap
   onSnapClicked(photo: Photo): void {

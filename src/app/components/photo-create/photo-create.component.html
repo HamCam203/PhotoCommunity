@@ -1,0 +1,50 @@
+<div class="photo-create-container">
+    <h1>Créer un nouveau Snap</h1>
+    <form [formGroup]="photoForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="title">Titre</label>
+        <input id="title" formControlName="title" type="text" />
+        <div *ngIf="photoForm.get('title')?.invalid && photoForm.get('title')?.touched">
+          <small>Le titre est requis (minimum 3 caractères).</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description"></textarea>
+        <div *ngIf="photoForm.get('description')?.invalid && photoForm.get('description')?.touched">
+          <small>La description est requise (minimum 10 caractères).</small>
+        </div>
+      </div>
+  
+      <div>
+        <label>
+          <input type="radio" name="imageSource" value="url" [(ngModel)]="imageSource" /> URL
+        </label>
+        <label>
+          <input type="radio" name="imageSource" value="upload" [(ngModel)]="imageSource" /> Upload
+        </label>
+      </div>
+      
+      <!-- URL -->
+      <div *ngIf="imageSource === 'url'">
+        <label for="imageUrl">URL de l'image</label>
+        <input id="imageUrl" formControlName="imageUrl" type="text" />
+        <div *ngIf="photoForm.get('imageUrl')?.invalid && photoForm.get('imageUrl')?.touched">
+          <small>Une URL valide est requise.</small>
+        </div>
+      </div>
+      
+      <!-- Upload -->
+      <div *ngIf="imageSource === 'upload'">
+        <label for="image">Image</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <div *ngIf="imageError">
+          <small>{{ imageError }}</small>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="photoForm.invalid">Créer</button>
+    </form>
+  </div>
+  

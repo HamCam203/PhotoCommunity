@@ -1,4 +1,5 @@
 <div class="photo-gallery">
+  <button class="btn-create" (click)="onCreateSnap()">Créer un Snap</button> <!-- Bouton pour créer un snap -->
   <div class="average-snaps">
     <h3>Moyenne des snaps : {{ getAverageSnaps() | number:'1.0-2' }}</h3>
   </div>  

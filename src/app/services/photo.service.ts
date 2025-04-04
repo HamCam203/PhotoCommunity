@@ -8,9 +8,12 @@ export interface Photo {
   title: string;
   description: string;
   imageUrl: string;
+  imageBase64: string | null;  // Permettre que l'image soit null
   createdAt: Date | null;
   snaps: number;
 }
+
+
 
 @Injectable({
   providedIn: 'root' // Ensure the service is provided in the root injector
@@ -46,7 +49,6 @@ export class PhotoService {
     );
   }
 
-
   // Méthode partagée pour l'action Snap (ajout/retrait de like)
   onSnapClicked(photo: Photo): Observable<Photo> {
     if (photo.isSnapped) {
@@ -59,6 +61,12 @@ export class PhotoService {
     
     return this.updatePhoto(photo); // Mettre à jour la photo sur le serveur
   }
-  
 
+  // Nouvelle méthode pour créer une photo
+  createPhoto(photo: Partial<Photo>): Observable<Photo> {
+    return this.http.post<Photo>(this.apiUrl, photo).pipe(
+      tap(newPhoto => console.log('Photo créée:', newPhoto))
+    );
+  }
+  
 }

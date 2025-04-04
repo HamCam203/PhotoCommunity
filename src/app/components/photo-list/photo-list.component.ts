@@ -33,6 +33,11 @@ export class PhotoListComponent implements OnInit {
       console.log('Photo mise à jour:', updatedPhoto);
     });
   }
+  
+  onCreateSnap(): void {
+    this.router.navigate(['/photos/create']); // Redirige vers une page de création de snap
+  }
+  
   getAverageSnaps(): number {
     if (this.photos.length === 0) return 0;
     

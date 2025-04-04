@@ -2,7 +2,7 @@
   <div class="photo-card">
     <button class="nav-btn left" (click)="previousPhoto()">&#8592;</button>
 
-    <img [src]="photo.imageUrl" [alt]="photo.title" />
+    <img [src]="getImageSource(photo)" [alt]="photo.title" />
 
     <button class="nav-btn right" (click)="nextPhoto()">&#8594;</button>
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';  // Importation de Router
+import { ActivatedRoute, Router } from '@angular/router';
 import { PhotoService, Photo } from '../../services/photo.service';
 import { CommonModule } from '@angular/common';
 
@@ -10,25 +10,33 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./photo-detail.component.css']
 })
 export class PhotoDetailComponent implements OnInit {
-  photos: Photo[] = []; // Stocke toutes les photos
-  photo!: Photo; // Stocke la photo actuellement affichée
-  currentIndex: number = 0; // Index de la photo actuelle
+  photos: Photo[] = [];
+  photo!: Photo;
+  currentIndex: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private photoService: PhotoService,
-    private router: Router // Ajout de Router pour la navigation
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    // Récupérer toutes les photos au chargement du composant
     this.photoService.getPhotos().subscribe(data => {
       this.photos = data;
-      this.loadPhoto(); // Charger la photo par défaut selon l'ID
+      this.loadPhoto();
     });
   }
 
-  // Charger la photo actuelle en fonction de l'ID passé dans l'URL
+  // Méthode pour déterminer la source de l'image
+  getImageSource(photo: Photo): string {
+    // Si une image en base64 est disponible, l'utiliser
+    if (photo.imageBase64) {
+      return photo.imageBase64;
+    }
+    // Sinon, utiliser l'URL de l'image
+    return photo.imageUrl;
+  }
+
   loadPhoto(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -37,49 +45,44 @@ export class PhotoDetailComponent implements OnInit {
     }
   }
 
-  // Fonction pour afficher la photo précédente (retour à la dernière si au début)
   previousPhoto(): void {
     if (this.currentIndex > 0) {
       this.currentIndex--;
     } else {
-      this.currentIndex = this.photos.length - 1; // 🔄 Revient à la dernière photo
+      this.currentIndex = this.photos.length - 1;
     }
 
     this.photo = this.photos[this.currentIndex];
-    this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
+    this.router.navigate(['/photo', this.photo.id]);
   }
 
-  // Fonction pour afficher la photo suivante (retour à la première si à la fin)
   nextPhoto(): void {
     if (this.currentIndex < this.photos.length - 1) {
       this.currentIndex++;
     } else {
-      this.currentIndex = 0; // 🔄 Revient à la première photo
+      this.currentIndex = 0;
     }
 
     this.photo = this.photos[this.currentIndex];
-    this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
+    this.router.navigate(['/photo', this.photo.id]);
   }
-  // Fonction pour afficher une photo aléatoire
+
   randomPhoto(): void {
     if (this.photos.length > 1) {
       let randomIndex;
       do {
         randomIndex = Math.floor(Math.random() * this.photos.length);
-      } while (randomIndex === this.currentIndex); // Assurer qu'on ne reprend pas la même photo
+      } while (randomIndex === this.currentIndex);
 
       this.currentIndex = randomIndex;
       this.photo = this.photos[this.currentIndex];
-      this.router.navigate(['/photo', this.photo.id]); // Met à jour l'URL
+      this.router.navigate(['/photo', this.photo.id]);
     }
   }
 
-
-  // Méthode pour snap/unSnap
   onSnapClicked(photo: Photo): void {
     this.photoService.onSnapClicked(photo).subscribe(updatedPhoto => {
       console.log('Photo mise à jour:', updatedPhoto);
     });
   }
-
 }

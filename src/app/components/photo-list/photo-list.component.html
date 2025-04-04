@@ -1,5 +1,5 @@
 <div class="photo-gallery">
-  <button class="btn-create" (click)="onCreateSnap()">Créer un Snap</button> <!-- Bouton pour créer un snap -->
+  <button class="btn-create" (click)="onCreateSnap()">Créer un Snap</button>
   <div class="average-snaps">
     <h3>Moyenne des snaps : {{ getAverageSnaps() | number:'1.0-2' }}</h3>
   </div>  
@@ -7,7 +7,8 @@
     <div *ngFor="let photo of photos" 
          class="photo-card" 
          [ngClass]="{'snapped': photo.isSnapped}">
-      <img [src]="photo.imageUrl" [alt]="photo.title" />
+      <!-- Utiliser la source appropriée pour l'image -->
+      <img [src]="getImageSource(photo)" [alt]="photo.title" />
       <h2>{{ photo.title }}</h2>
       <p>{{ photo.description }}</p>
       <p><strong>Snaps:</strong> {{ photo.snaps }}</p>
@@ -27,7 +28,6 @@
       </button>
 
       <button (click)="onViewPhoto(photo.id)">OnView</button>
-
     </div>
   </div>
 </div>

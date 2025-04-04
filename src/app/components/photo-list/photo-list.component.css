@@ -1,101 +1,110 @@
 .photo-gallery {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    background-color: #d3d3d364; /* Gris clair */
-  }
-  
-  .snaps-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 colonnes */
-    gap: 20px; /* Espacement entre les cartes */
-    justify-content: center;
-  }
-  
-  .photo-card {
-    width: 100%; /* Fais en sorte que chaque carte prenne toute la largeur de sa cellule */
-    max-width: 300px; /* Limite la taille maximale de la carte */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 10px;
-    background: #fff;
-  }
-  .photo-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .photo-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  button {
-    background-color: #80e683;
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    box-shadow: lightgray 3px 3px 7px;
-    margin-right: 20px;
-    outline: none;
-    font-size: 14px;
-    font-weight: 500;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: #d3d3d364; /* Gris clair */
+}
 
-    &:active ,&:hover  {
-      background-color: #4CAF50;
-    }
-  }
+.snaps-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 colonnes */
+  gap: 20px; /* Espacement entre les cartes */
+  justify-content: center;
+}
 
-  .snapped {
-    background-color: rgba(144, 238, 144, 0.4); /* Vert clair */
-    color: darkgreen;
-    border: 2px solid lightgreen;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(144, 238, 144, 0.6);
-  }
-  
-  .snapped button {
-    background-color: darkgreen;
-    color: white;
-    border-radius: 5px;
-    padding: 8px 16px;
-    box-shadow: 3px 3px 7px lightgreen;
-  }
-  
-  
-  .snapped:hover {
-    transform: scale(1.05);
-  }
-  .average-snaps {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    padding: 10px;
-    background: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    text-align: center;
-  }
+.photo-card {
+  width: 100%; /* Fais en sorte que chaque carte prenne toute la largeur de sa cellule */
+  max-width: 300px; /* Limite la taille maximale de la carte */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+  background: #fff;
+}
+.photo-card:hover {
+  transform: scale(1.05);
+}
 
-  .btn-create {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 20px;
+.photo-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+button {
+  background-color: #80e683;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border: none;
+  box-shadow: lightgray 3px 3px 7px;
+  margin-right: 20px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:active ,&:hover  {
+    background-color: #4CAF50;
   }
-  
-  .btn-create:hover {
-    background-color: #218838;
-  }
+}
+
+.snapped {
+  background-color: rgba(144, 238, 144, 0.4); /* Vert clair */
+  color: darkgreen;
+  border: 2px solid lightgreen;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(144, 238, 144, 0.6);
+}
+
+.snapped button {
+  background-color: darkgreen;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 16px;
+  box-shadow: 3px 3px 7px lightgreen;
+}
 
 
+.snapped:hover {
+  transform: scale(1.05);
+}
+.average-snaps {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
+}
+
+.btn-create {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.btn-create:hover {
+  background-color: #218838;
+}
+
+/* Style du bouton de suppression */
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}

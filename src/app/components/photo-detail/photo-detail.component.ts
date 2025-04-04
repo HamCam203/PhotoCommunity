@@ -85,4 +85,19 @@ export class PhotoDetailComponent implements OnInit {
       console.log('Photo mise à jour:', updatedPhoto);
     });
   }
+  
+  // Nouvelle méthode pour supprimer une photo
+  deletePhoto(): void {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette photo ?')) {
+      this.photoService.deletePhoto(this.photo.id).subscribe({
+        next: () => {
+          console.log('Photo supprimée avec succès');
+          this.router.navigate(['/photos']);
+        },
+        error: (err) => {
+          console.error('Erreur lors de la suppression de la photo:', err);
+        }
+      });
+    }
+  }
 }

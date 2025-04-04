@@ -98,3 +98,12 @@ button:hover {
 .right {
   right: 0; /* Flèche à droite */
 }
+
+/* Style du bouton de suppression */
+.delete-btn {
+  background-color: #dc3545;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}

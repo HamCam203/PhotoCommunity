@@ -66,4 +66,21 @@ export class PhotoListComponent implements OnInit {
   isEqualAverage(snaps: number): boolean {
     return snaps === this.getAverageSnaps();
   }
+  
+  // Nouvelle méthode pour supprimer une photo
+  deletePhoto(photoId: string, event: Event): void {
+    event.stopPropagation(); // Empêche la navigation vers la page de détail
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette photo ?')) {
+      this.photoService.deletePhoto(photoId).subscribe({
+        next: () => {
+          console.log('Photo supprimée avec succès');
+          // Supprime la photo du tableau local pour mettre à jour l'UI immédiatement
+          this.photos = this.photos.filter(photo => photo.id !== photoId);
+        },
+        error: (err) => {
+          console.error('Erreur lors de la suppression de la photo:', err);
+        }
+      });
+    }
+  }
 }

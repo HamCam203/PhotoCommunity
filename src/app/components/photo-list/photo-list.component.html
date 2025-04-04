@@ -28,6 +28,11 @@
       </button>
 
       <button (click)="onViewPhoto(photo.id)">OnView</button>
+      
+      <!-- Nouveau bouton de suppression -->
+      <button class="delete-btn" (click)="deletePhoto(photo.id, $event)">
+        🗑️
+      </button>
     </div>
   </div>
 </div>

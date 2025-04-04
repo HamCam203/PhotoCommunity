@@ -69,4 +69,11 @@ export class PhotoService {
     );
   }
   
+  // Nouvelle méthode pour supprimer une photo
+  deletePhoto(id: string): Observable<any> {
+    const deleteUrl = `${this.apiUrl}/${id}`;
+    return this.http.delete<any>(deleteUrl).pipe(
+      tap(() => console.log(`Photo with id ${id} deleted`))
+    );
+  }
 }

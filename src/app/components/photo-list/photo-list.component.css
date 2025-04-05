@@ -7,16 +7,52 @@
   background-color: #d3d3d364; /* Gris clair */
 }
 
+.header-bar {
+  display: flex;
+  justify-content: center; /* centrer horizontalement */
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* gère mieux les petits écrans */
+}
+
+.average-snaps,
+.btn-create {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px 20px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  line-height: 1.5;
+  height: 70px; /* même hauteur pour les deux */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.btn-create {
+  cursor: pointer;
+  border: none;
+}
+
+.btn-create:hover {
+  background-color: #218838;
+}
+
+
 .snaps-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 colonnes */
-  gap: 20px; /* Espacement entre les cartes */
+  gap: 20px;
   justify-content: center;
+  width: 100%;
 }
 
 .photo-card {
-  width: 100%; /* Fais en sorte que chaque carte prenne toute la largeur de sa cellule */
-  max-width: 300px; /* Limite la taille maximale de la carte */
+  width: 100%;
+  max-width: 300px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -24,6 +60,7 @@
   padding: 10px;
   background: #fff;
 }
+
 .photo-card:hover {
   transform: scale(1.05);
 }
@@ -36,7 +73,6 @@
 
 button {
   background-color: #80e683;
-  box-sizing: border-box;
   padding: 5px 10px;
   border: none;
   box-shadow: lightgray 3px 3px 7px;
@@ -44,10 +80,12 @@ button {
   outline: none;
   font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
+}
 
-  &:active ,&:hover  {
-    background-color: #4CAF50;
-  }
+button:active,
+button:hover {
+  background-color: #4CAF50;
 }
 
 .snapped {
@@ -66,36 +104,8 @@ button {
   box-shadow: 3px 3px 7px lightgreen;
 }
 
-
 .snapped:hover {
   transform: scale(1.05);
-}
-.average-snaps {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 20px;
-  padding: 10px;
-  background: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  text-align: center;
-}
-
-.btn-create {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.btn-create:hover {
-  background-color: #218838;
 }
 
 /* Style du bouton de suppression */
@@ -103,6 +113,7 @@ button {
   background-color: #dc3545;
   color: white;
   margin-left: 10px;
+  padding: 5px 10px;
 }
 
 .delete-btn:hover {

@@ -1,38 +1,31 @@
 <div class="photo-gallery">
-  <button class="btn-create" (click)="onCreateSnap()">Créer un Snap</button>
-  <div class="average-snaps">
-    <h3>Moyenne des snaps : {{ getAverageSnaps() | number:'1.0-2' }}</h3>
-  </div>  
+  <div class="header-bar">
+    <div class="average-snaps">
+      Moyenne des snaps : {{ getAverageSnaps() | number:'1.0-2' }}
+    </div>
+    <button class="btn-create" (click)="onCreateSnap()">Créer un Snap</button>
+  </div>
+  
+
   <div class="snaps-container">  
     <div *ngFor="let photo of photos" 
          class="photo-card" 
          [ngClass]="{'snapped': photo.isSnapped}">
-      <!-- Utiliser la source appropriée pour l'image -->
       <img [src]="getImageSource(photo)" [alt]="photo.title" />
       <h2>{{ photo.title }}</h2>
       <p>{{ photo.description }}</p>
       <p><strong>Snaps:</strong> {{ photo.snaps }}</p>
-      <!-- Affichage si le FaceSnap est au-dessus ou en-dessous de la moyenne -->
-      <p *ngIf="isAboveAverage(photo.snaps)">
-        🟢 Ce FaceSnap est au-dessus de la moyenne !
-      </p>
-      <p *ngIf="isBelowAverage(photo.snaps)">
-        🔴 Ce FaceSnap est en-dessous de la moyenne.
-      </p>
-      <p *ngIf="isEqualAverage(photo.snaps)">
-        ⚪ Ce FaceSnap est exactement dans la moyenne.
-      </p>
-      <!-- Bouton Snap/UnSnap -->
+
+      <p *ngIf="isAboveAverage(photo.snaps)">🟢 Ce FaceSnap est au-dessus de la moyenne !</p>
+      <p *ngIf="isBelowAverage(photo.snaps)">🔴 Ce FaceSnap est en-dessous de la moyenne.</p>
+      <p *ngIf="isEqualAverage(photo.snaps)">⚪ Ce FaceSnap est exactement dans la moyenne.</p>
+
       <button (click)="onSnapClicked(photo)">
         {{ photo.isSnapped ? 'UnSnap' : 'Snap' }}
       </button>
 
       <button (click)="onViewPhoto(photo.id)">OnView</button>
-      
-      <!-- Nouveau bouton de suppression -->
-      <button class="delete-btn" (click)="deletePhoto(photo.id, $event)">
-        🗑️
-      </button>
+      <button class="delete-btn" (click)="deletePhoto(photo.id, $event)">🗑️</button>
     </div>
   </div>
 </div>

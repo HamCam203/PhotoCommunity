@@ -12,15 +12,20 @@
 
     <!-- Conteneur des boutons pour un espacement homogène -->
     <div class="button-container">
-      <button (click)="onSnapClicked(photo)">
-        {{ photo.isSnapped ? 'UnSnap' : 'Snap' }}
-      </button>
-      <button (click)="randomPhoto()">
-        🔀
-      </button>
-      <button class="delete-btn" (click)="deletePhoto()">
-        🗑️ Supprimer
-      </button>
+      <div class="button-container">
+        <button (click)="onSnapClicked(photo)">
+          {{ photo.isSnapped ? 'UnSnap' : 'Snap' }}
+        </button>
+        <button (click)="randomPhoto()">
+          🔀
+        </button>
+        <button (click)="editPhoto()" class="edit-btn">
+          ✏️ Modifier
+        </button>
+        <button class="delete-btn" (click)="deletePhoto()">
+          🗑️ Supprimer
+        </button>
+      </div>
     </div>
   </div>
 </div>

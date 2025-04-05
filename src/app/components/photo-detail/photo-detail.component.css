@@ -107,3 +107,13 @@ button:hover {
 .delete-btn:hover {
   background-color: #c82333;
 }
+
+/* Style du bouton de modification */
+.edit-btn {
+  background-color: #ffc107;
+  color: black;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
+}

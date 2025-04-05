@@ -100,4 +100,8 @@ export class PhotoDetailComponent implements OnInit {
       });
     }
   }
+    // Méthode pour éditer la photo
+  editPhoto(): void {
+    this.router.navigate(['/photos/edit', this.photo.id]);
+  }
 }

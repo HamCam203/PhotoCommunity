@@ -105,4 +105,9 @@ export class PhotoListComponent implements OnInit {
       });
     }
   }
+  // Méthode pour éditer une photo
+  editPhoto(photoId: string, event: Event): void {
+    event.stopPropagation(); // Empêche la navigation vers la page de détail
+    this.router.navigate(['/photos/edit', photoId]);
+  }
 }

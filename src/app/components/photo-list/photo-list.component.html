@@ -42,6 +42,7 @@
       </button>
 
       <button (click)="onViewPhoto(photo.id)">OnView</button>
+      <button class="edit-btn" (click)="editPhoto(photo.id, $event)">✏️</button>
       <button class="delete-btn" (click)="deletePhoto(photo.id, $event)">🗑️</button>
     </div>
   </div>

@@ -25,9 +25,9 @@
   
 
   <div class="snaps-container">  
-    <div *ngFor="let photo of photos" 
-         class="photo-card" 
-         [ngClass]="{'snapped': photo.isSnapped}">
+    <div *ngFor="let photo of filteredPhotos" 
+      class="photo-card" 
+      [ngClass]="{'snapped': photo.isSnapped}">
       <img [src]="getImageSource(photo)" [alt]="photo.title" />
       <h2>{{ photo.title }}</h2>
       <p>{{ photo.description }}</p>

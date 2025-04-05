@@ -3,7 +3,24 @@
     <div class="average-snaps">
       Moyenne des snaps : {{ getAverageSnaps() | number:'1.0-2' }}
     </div>
+    
+    <!-- Ajout de la barre de recherche -->
+    <div class="search-container">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        (input)="onSearchChange()"
+        placeholder="Rechercher par titre..." 
+        class="search-input"
+      />
+    </div>
+    
     <button class="btn-create" (click)="onCreateSnap()">Créer un Snap</button>
+  </div>
+  
+  <!-- Afficher un message quand aucun résultat n'est trouvé -->
+  <div *ngIf="filteredPhotos.length === 0" class="no-results">
+    Aucune photo ne correspond à votre recherche.
   </div>
   
 

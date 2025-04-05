@@ -1,25 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { PhotoService, Photo } from '../../services/photo.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-photo-list',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule], // Ajouter FormsModule
   templateUrl: './photo-list.component.html',
   styleUrls: ['./photo-list.component.css']
 })
 export class PhotoListComponent implements OnInit {
   photos: Photo[] = [];
+  filteredPhotos: Photo[] = []; // Nouvelle propriété pour les photos filtrées
+  searchTerm: string = ''; // Pour stocker le terme de recherche
 
   constructor(private photoService: PhotoService, private router: Router) {}
 
   ngOnInit(): void {
     this.photoService.getPhotos().subscribe(data => {
       this.photos = data;
+      this.filteredPhotos = data; // Initialiser filteredPhotos avec toutes les photos
     });
+  }
+
+  // Méthode pour filtrer les photos en fonction du terme de recherche
+  onSearchChange(): void {
+    if (!this.searchTerm.trim()) {
+      this.filteredPhotos = this.photos; // Si la recherche est vide, afficher toutes les photos
+      return;
+    }
+    
+    const searchTermLower = this.searchTerm.toLowerCase();
+    this.filteredPhotos = this.photos.filter(photo => 
+      photo.title.toLowerCase().includes(searchTermLower)
+    );
   }
 
   // Méthode pour déterminer la source de l'image
@@ -49,12 +66,17 @@ export class PhotoListComponent implements OnInit {
   }
   
   getAverageSnaps(): number {
-    if (this.photos.length === 0) return 0;
+    if (this.filteredPhotos.length === 0) return 0;
     
-    const totalSnaps = this.photos.reduce((sum, photo) => sum + photo.snaps, 0);
-    return totalSnaps / this.photos.length;
+    const totalSnaps = this.filteredPhotos.reduce((sum, photo) => sum + photo.snaps, 0);
+    return totalSnaps / this.filteredPhotos.length;
   }
   
+  // Méthode pour réinitialiser la recherche
+  resetSearch(): void {
+    this.searchTerm = '';
+    this.filteredPhotos = this.photos;
+  }
   isAboveAverage(snaps: number): boolean {
     return snaps > this.getAverageSnaps();
   }

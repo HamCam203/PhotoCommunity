@@ -1,1 +1,20 @@
-<p>photo-edit works!</p>
+<div class="edit-container" *ngIf="photoForm">
+    <h2>Modifier la Photo</h2>
+  
+    <form [formGroup]="photoForm" (ngSubmit)="onSubmit()">
+      <label>Titre</label>
+      <input type="text" formControlName="title" />
+  
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+  
+      <label>URL de l’image</label>
+      <input type="text" formControlName="imageUrl" />
+  
+      <label>Image Base64</label>
+      <textarea formControlName="imageBase64" rows="5"></textarea>
+  
+      <button type="submit" [disabled]="photoForm.invalid">💾 Sauvegarder</button>
+    </form>
+  </div>
+  

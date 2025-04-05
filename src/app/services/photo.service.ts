@@ -76,4 +76,12 @@ export class PhotoService {
       tap(() => console.log(`Photo with id ${id} deleted`))
     );
   }
+  // Nouvelle méthode : mise à jour des champs d'une photo (hors snaps)
+  editPhoto(photo: Photo): Observable<Photo> {
+    const url = `${this.apiUrl}/${photo.id}`;
+    return this.http.patch<Photo>(url, photo).pipe(
+      tap(updated => console.log('Photo éditée :', updated))
+    );
+  }
+
 }

@@ -43,6 +43,22 @@ export class PhotoEditComponent implements OnInit {
       imageBase64: [photo.imageBase64]
     });
   }
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+  
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        this.photoForm.patchValue({ imageBase64: base64 }); // Mets à jour le champ dans le formulaire
+      };
+  
+      reader.readAsDataURL(file); // Lit le fichier et convertit en base64
+    }
+  }
+  
 
   onSubmit(): void {
     if (this.photoForm.valid) {

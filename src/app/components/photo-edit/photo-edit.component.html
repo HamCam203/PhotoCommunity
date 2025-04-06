@@ -25,9 +25,16 @@
       </div>
     </div>
 
+    <!-- Champ de sélection de fichier -->
     <div>
-      <label for="imageBase64">Image Base64 (optionnel)</label>
-      <textarea id="imageBase64" formControlName="imageBase64"></textarea>
+      <label for="image">Image :</label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    </div>
+
+    <!-- Optionnel : prévisualisation de l'image -->
+    <div *ngIf="photoForm.get('imageBase64')?.value">
+      <p>Prévisualisation :</p>
+      <img [src]="photoForm.get('imageBase64')?.value" alt="Aperçu" width="200" />
     </div>
 
     <button type="submit" [disabled]="photoForm.invalid">Enregistrer</button>

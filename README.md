@@ -2,11 +2,14 @@
 
 PhotoCommunity est une application Angular permettant d'afficher et de gérer une galerie de photos interactives où les utilisateurs peuvent "snaper" (liker) leurs photos préférées.
 
-## 🚀 Fonctionnalités
+### ✨ Fonctionnalités
 
-- 📷 Affichage dynamique des photos avec titre et description
-- 👍 Possibilité de "snaper" une photo pour augmenter son compteur
-- 🔄 Mise à jour des données via un backend RESTful
+- 📷 **Affichage dynamique** des photos avec **titre**, **description**, et **image**  
+- 👍 Possibilité de **"snaper"** une photo pour **augmenter ou diminuer le compteur de likes**
+- 🖊️ **Édition des photos** (titre, description, image) via un formulaire intuitif
+- 🗂️ **Ajout d’image** directement depuis l’explorateur de fichiers (avec conversion automatique en base64)
+- 🔄 **Synchronisation des données** en temps réel avec un backend **RESTful Spring Boot**
+- 🗑️ **Suppression** d'une photo via l'interface
 
 ## 🛠️ Technologies utilisées
 
@@ -73,9 +76,12 @@ src/
 L'application consomme une API REST exposée sur [http://localhost:8080/api/facesnaps](http://localhost:8080/api/facesnaps) avec les routes suivantes :
 
 - **`GET /api/facesnaps`** : Récupère toutes les photos  
-- **`PUT /api/facesnaps/{id}`** : Met à jour une photo (notamment le nombre de snaps)  
+- **`GET /api/facesnaps/{id}`** : Récupère une photo par ID  
+- **`POST /api/facesnaps`** : Crée une nouvelle photo  
+- **`PUT /api/facesnaps/{id}`** : Met à jour une photo (ex. nombre de snaps, titre, description, image...)  
+- **`DELETE /api/facesnaps/{id}`** : Supprime une photo par ID  
 
-L'API utilisée provient du projet suivant : [LearnSpringDataMongoDB](https://github.com/HamCam203/LearnSpringDataMongoDB).
+> L'API utilisée provient du projet suivant : [LearnSpringDataMongoDB](https://github.com/HamCam203/LearnSpringDataMongoDB)
 
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.

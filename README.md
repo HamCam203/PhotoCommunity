@@ -17,24 +17,55 @@ PhotoCommunity est une application Angular permettant d'afficher et de gérer un
 ## 📂 Structure du projet
 ```
 src/
-│── app/
-│   ├── components/photo-list/
-│   │   ├── photo-list.component.css
-│   │   ├── photo-list.component.html
-│   │   ├── photo-list.component.spec.ts
-│   │   ├── photo-list.component.ts
-│   ├── services/
-│   │   ├── photo.service.spec.ts
-│   │   ├── photo.service.ts
-│   ├── app.component.css
-│   ├── app.component.html
-│   ├── app.component.spec.ts
-│   ├── app.component.ts
-│   ├── app.config.ts
-│   ├── app.routes.ts
-│── index.html
-│── main.ts
-│── styles.css
+└── app/
+    ├── assets/
+    │   └── logo.jpg
+    ├── components/
+    │   ├── about/
+    │   │   └── about.component.ts
+    │   ├── header/
+    │   │   ├── header.component.html
+    │   │   ├── header.component.scss
+    │   │   ├── header.component.spec.ts
+    │   │   └── header.component.ts
+    │   ├── landing-page/
+    │   │   ├── landing-page.component.html
+    │   │   ├── landing-page.component.scss
+    │   │   ├── landing-page.component.spec.ts
+    │   │   └── landing-page.component.ts
+    │   ├── photo-create/
+    │   │   ├── photo-create.component.css
+    │   │   ├── photo-create.component.html
+    │   │   ├── photo-create.component.scss
+    │   │   ├── photo-create.component.spec.ts
+    │   │   └── photo-create.component.ts
+    │   ├── photo-detail/
+    │   │   ├── photo-detail.component.css
+    │   │   ├── photo-detail.component.html
+    │   │   ├── photo-detail.component.spec.ts
+    │   │   └── photo-detail.component.ts
+    │   ├── photo-edit/
+    │   │   ├── photo-edit.component.html
+    │   │   ├── photo-edit.component.scss
+    │   │   ├── photo-edit.component.spec.ts
+    │   │   └── photo-edit.component.ts
+    │   └── photo-list/
+    │       ├── photo-list.component.css
+    │       ├── photo-list.component.html
+    │       ├── photo-list.component.spec.ts
+    │       └── photo-list.component.ts
+    ├── services/
+    │   ├── photo.service.spec.ts
+    │   └── photo.service.ts
+    ├── app.component.css
+    ├── app.component.html
+    ├── app.component.spec.ts
+    ├── app.component.ts
+    ├── app.config.ts
+    ├── app.routes.ts
+    ├── index.html
+    ├── main.ts
+    └──  styles.css
 ```
 
 ## 🔧 API Backend

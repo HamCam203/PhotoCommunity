@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-photo-edit',
   templateUrl: './photo-edit.component.html',
-  styleUrls: ['./photo-edit.component.css'],
+  styleUrls: ['./photo-edit.component.scss'],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -46,18 +46,19 @@ export class PhotoEditComponent implements OnInit {
 
   onSubmit(): void {
     if (this.photoForm.valid) {
-      const updatedPhoto: Photo = {
-        ...this.photo,
+      const updatedPhoto: Partial<Photo> & { id: string } = {
+        id: this.photo.id,
         ...this.photoForm.value
       };
-
-      this.photoService.editPhoto(this.photo).subscribe({
+  
+      this.photoService.updatePhoto(updatedPhoto).subscribe({
         next: updated => {
           console.log('Mise à jour réussie !');
           this.router.navigate(['/photos', updated.id]);
         },
         error: err => console.error('Erreur lors de la mise à jour', err)
-      });      
+      });
     }
   }
+  
 }

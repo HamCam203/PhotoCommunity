@@ -30,17 +30,28 @@ export class PhotoService {
   }
 
   // Mettre à jour une photo (ajout ou retrait d'un like)
-  updatePhoto(photo: Photo): Observable<Photo> {
-    const updateUrl = `${this.apiUrl}/${photo.id}`;
-    const updateData = {
-      snaps: photo.snaps, // On envoie uniquement le nombre de snaps mis à jour
-      isSnapped: photo.isSnapped // Indique si la photo est likée ou pas
-    };
+  // updatePhoto(photo: Photo): Observable<Photo> {
+  //   const updateUrl = `${this.apiUrl}/${photo.id}`;
+  //   const updateData = {
+  //     snaps: photo.snaps, // On envoie uniquement le nombre de snaps mis à jour
+  //     isSnapped: photo.isSnapped // Indique si la photo est likée ou pas
+  //   };
 
-    return this.http.put<Photo>(updateUrl, updateData).pipe(
+  //   return this.http.put<Photo>(updateUrl, updateData).pipe(
+  //     tap(updatedPhoto => console.log('Photo mise à jour:', updatedPhoto))
+  //   );
+  // }
+
+  // Mise à jour partielle de la photo (ex: likes OU infos)
+  updatePhoto(photo: Partial<Photo> & { id: string }): Observable<Photo> {
+    const updateUrl = `${this.apiUrl}/${photo.id}`;
+
+    // On n’envoie que les champs à mettre à jour
+    return this.http.put<Photo>(updateUrl, photo).pipe(
       tap(updatedPhoto => console.log('Photo mise à jour:', updatedPhoto))
     );
   }
+
   // Nouvelle méthode pour récupérer une photo par son ID
   getPhotoById(id: string): Observable<Photo> {
     const photoUrl = `${this.apiUrl}/${id}`;
@@ -77,11 +88,24 @@ export class PhotoService {
     );
   }
   // Nouvelle méthode : mise à jour des champs d'une photo (hors snaps)
-  editPhoto(photo: Photo): Observable<Photo> {
-    const url = `${this.apiUrl}/${photo.id}`;
-    return this.http.patch<Photo>(url, photo).pipe(
-      tap(updated => console.log('Photo éditée :', updated))
-    );
-  }
+  // editPhoto(photo: Partial<Photo>): Observable<Photo> {
+  //   const url = `${this.apiUrl}/${photo.id}`;
+  //   return this.http.patch<Photo>(url, photo).pipe(
+  //     tap(updated => console.log('Photo éditée :', updated))
+  //   );
+  // }
+    // Mettre à jour une photo (ajout ou retrait d'un like)
+    // editPhoto(photo: Photo): Observable<Photo> {
+    //   const updateUrl = `${this.apiUrl}/${photo.id}`;
+    //   const updateData = {
+    //     title: photo.title,
+    //     description: photo.description,
+    //     imageUrl: photo.imageUrl,
+    //     imageBase64: photo.imageBase64,
+    //   };
+    //   return this.http.put<Photo>(updateUrl, updateData).pipe(
+    //     tap(updatedPhoto => console.log('Photo mise à jour:', updatedPhoto))
+    //   );
+    // }
 
 }
